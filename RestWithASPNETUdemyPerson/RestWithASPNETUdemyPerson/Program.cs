@@ -1,3 +1,5 @@
+using RestWithASPNETUdemyPerson.Services.Implementations;
+
 namespace RestWithASPNETUdemyPerson;
 
 public class Program
@@ -9,6 +11,11 @@ public class Program
         // Add services to the container.
 
         builder.Services.AddControllers();
+        
+        //depen
+        builder.Services.AddScoped<IPersonService, PersonServiceImplementation>();
+        
+        
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
