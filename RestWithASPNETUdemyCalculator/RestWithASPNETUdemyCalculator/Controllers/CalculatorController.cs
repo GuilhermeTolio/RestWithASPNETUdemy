@@ -31,8 +31,8 @@ public class CalculatorController : ControllerBase
     {
         if (IsNumeric(firstNumber) && IsNumeric(secondNumber))
         {
-            var mul = ConvertToDecimal(firstNumber) - ConvertToDecimal(secondNumber);
-            return Ok(mul.ToString());
+            var sub = ConvertToDecimal(firstNumber) - ConvertToDecimal(secondNumber);
+            return Ok(sub.ToString());
         }
         
         return BadRequest("Invalid Input");
@@ -55,8 +55,8 @@ public class CalculatorController : ControllerBase
     {
         if (IsNumeric(firstNumber) && IsNumeric(secondNumber))
         {
-            var mul = ConvertToDecimal(firstNumber) / ConvertToDecimal(secondNumber);
-            return Ok(mul.ToString());
+            var div = ConvertToDecimal(firstNumber) / ConvertToDecimal(secondNumber);
+            return Ok(div.ToString());
         }
         
         return BadRequest("Invalid Input");
@@ -67,14 +67,24 @@ public class CalculatorController : ControllerBase
     {
         if (IsNumeric(firstNumber) && IsNumeric(secondNumber))
         {
-            var med = ((ConvertToDecimal(firstNumber) + ConvertToDecimal(secondNumber))/2);
+            var med = (ConvertToDecimal(firstNumber) + ConvertToDecimal(secondNumber))/2;
             return Ok(med.ToString());
         }
         
         return BadRequest("Invalid Input");
     }
     
-
+    [HttpGet("raizquadrada/{firstNumber}")]
+    public IActionResult RaizQuadradaGet(string firstNumber)
+    {
+        if (IsNumeric(firstNumber) )
+        {
+            var med = Math.Sqrt((double)ConvertToDecimal(firstNumber));
+            return Ok(med.ToString());
+        }
+        
+        return BadRequest("Invalid Input");
+    }
     
     private bool IsNumeric(string strNumber)
     {
