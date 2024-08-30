@@ -1,6 +1,6 @@
 namespace RestWithASPNETUdemyCalculator;
 
-public class WeatherForecast
+public class Calculator
 {
     public DateTime Date { get; set; }
 
