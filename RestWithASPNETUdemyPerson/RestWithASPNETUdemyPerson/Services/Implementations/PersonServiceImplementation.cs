@@ -4,14 +4,14 @@ namespace RestWithASPNETUdemyPerson.Services.Implementations;
 
 public class PersonServiceImplementation : IPersonService
 {
-    private volatile int count;
+    private volatile int _count;
 
-    public Person Create(Person person)
+    public Person? Create(Person? person)
     {
         return person;
     }
 
-    public Person Update(Person person)
+    public Person? Update(Person? person)
     {
         return person;
     }
@@ -53,7 +53,7 @@ public class PersonServiceImplementation : IPersonService
 
     private long IncrementAndGet()
     {
-        return Interlocked.Increment(ref count);
+        return Interlocked.Increment(ref _count);
     }
 
     public void Delete(long id)

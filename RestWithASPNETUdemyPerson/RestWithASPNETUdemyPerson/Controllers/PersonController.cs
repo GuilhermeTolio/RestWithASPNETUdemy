@@ -5,7 +5,7 @@ using RestWithASPNETUdemyPerson.Services.Implementations;
 namespace RestWithASPNETUdemyPerson.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
 public class PersonController : ControllerBase
 {
     private readonly ILogger<PersonController> _logger;
@@ -36,7 +36,7 @@ public class PersonController : ControllerBase
     }
     
     [HttpPost]
-    public IActionResult Post([FromBody] Person person)
+    public IActionResult Post([FromBody] Person? person)
     {
         if (person == null)
         {
@@ -46,7 +46,7 @@ public class PersonController : ControllerBase
         return Ok(_personService.Create(person));
     }
     [HttpPut]
-    public IActionResult Put([FromBody] Person person)
+    public IActionResult Put([FromBody] Person? person)
     {
         if (person == null)
         {
