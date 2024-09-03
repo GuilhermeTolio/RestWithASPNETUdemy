@@ -13,9 +13,9 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
         
-        var connection = builder.Configuration.GetConnectionString("MySQLConnection:MySQLConnection");
+        var connection = builder.Configuration.GetConnectionString("MySQLConnection");
 
-        builder.Services.AddDbContext<MySQLContext>(options => options.UseMySql(connection, new MySqlServerVersion(new Version(8, 0, 28))));
+        builder.Services.AddDbContext<MySqlContext>(options => options.UseMySql(connection, new MySqlServerVersion(new Version(8, 0, 28))));
         
         var mapperConfig = MappingConfig.RegisterMapps();
         IMapper mapper = mapperConfig.CreateMapper();

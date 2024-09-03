@@ -2,10 +2,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GeekShopping.ProductAPi.Model.Context;
 
-public class MySQLContext : DbContext
+public class MySqlContext : DbContext
 {
-    public MySQLContext(){}
-    public MySQLContext(DbContextOptions<MySQLContext> options) : base(options){}
+    public MySqlContext(){}
+    public MySqlContext(DbContextOptions<MySqlContext> options) : base(options){}
     
     public DbSet<Product> Products { get; set; }
 }
