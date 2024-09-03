@@ -1,6 +1,7 @@
 using AutoMapper;
 using GeekShopping.ProductAPi.Config;
 using GeekShopping.ProductAPi.Model.Context;
+using GeekShopping.ProductAPi.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
@@ -19,6 +20,8 @@ public class Program
         var mapperConfig = MappingConfig.RegisterMapps();
         IMapper mapper = mapperConfig.CreateMapper();
         builder.Services.AddSingleton(mapper);
+
+        builder.Services.AddScoped<IProductRepository, ProductRepository>();
         
         // IMapper mapper = MappingConfig.RegisterMapps().CreateMapper();
         // builder.Services.AddSingleton(mapper);

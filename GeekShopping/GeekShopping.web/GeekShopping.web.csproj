@@ -20,19 +20,11 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Remove="Models\**" />
+      <Compile Include="Models\ErrorViewModel.cs" />
     </ItemGroup>
 
     <ItemGroup>
-      <EmbeddedResource Remove="Models\**" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Content Remove="Models\**" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <None Remove="Models\**" />
+      <Folder Include="Models\Repository\" />
     </ItemGroup>
 
 </Project>
