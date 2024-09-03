@@ -4,7 +4,6 @@ using GeekShopping.ProductAPi.Model.Base;
 
 namespace GeekShopping.ProductAPi.Model;
 
-
 [Table("product")]
 public class Product : BaseEntity
 {
@@ -15,7 +14,7 @@ public class Product : BaseEntity
 
     [Column("price")]
     [Required]
-    [Range(1,10000)]
+    [Range(1, 10000)]
     public decimal Price { get; set; }
 
     [Column("description")]

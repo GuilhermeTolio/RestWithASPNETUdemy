@@ -32,7 +32,7 @@ public class ProductController : ControllerBase
     }
     
     [HttpPost]
-    public async Task<ActionResult<ProductVo>> Create(ProductVo vo)
+    public async Task<ActionResult<ProductVo>> Create([FromBody]ProductVo vo)
     {
         if (vo == null) return BadRequest();
         var product = await _repository.Create(vo);
@@ -40,7 +40,7 @@ public class ProductController : ControllerBase
     }
     
     [HttpPut]
-    public async Task<ActionResult<ProductVo>> Update(ProductVo vo)
+    public async Task<ActionResult<ProductVo>> Update([FromBody]ProductVo vo)
     {
         if (vo == null) return BadRequest();
         var product = await _repository.Update(vo);
@@ -48,7 +48,7 @@ public class ProductController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    public async Task<ActionResult> Delete(long id)
+    public async Task<ActionResult> Delete([FromBody]long id)
     {
         var status = await _repository.Delete(id);
         if (!status) return BadRequest();

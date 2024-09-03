@@ -32,7 +32,7 @@ namespace GeekShopping.web.Utils
             content.Headers.ContentType = contentType;
             return httpClient.PostAsync(url, content);
         }
-        
+
         public static Task<HttpResponseMessage> PutAsJson<T>(
             this HttpClient httpClient,
             string url,
