@@ -3,6 +3,9 @@ using GeekShopping.web.Services.IServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddHttpClient<IProductService, ProductService>(
+    c => c.BaseAddress = new Uri(builder.Configuration["ServiceUrls:ProductAPI"] ?? throw new InvalidOperationException())
+);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
@@ -16,9 +19,6 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-builder.Services.AddHttpClient<IProductService, ProductService>(
-    c => c.BaseAddress = new Uri(builder.Configuration["ServiceUrls:ProductAPI"] ?? throw new InvalidOperationException())
-);
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

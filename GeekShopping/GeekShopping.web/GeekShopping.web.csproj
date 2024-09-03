@@ -20,11 +20,9 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Include="Models\ErrorViewModel.cs" />
-    </ItemGroup>
-
-    <ItemGroup>
       <Folder Include="Models\Repository\" />
+      <Folder Include="wwwroot\Images\" />
     </ItemGroup>
 
+    
 </Project>
