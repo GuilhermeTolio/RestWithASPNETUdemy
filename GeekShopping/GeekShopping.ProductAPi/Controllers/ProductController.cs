@@ -22,6 +22,7 @@ public class ProductController : ControllerBase
         var products = await _repository.FindAll();
         return Ok(products);
     }
+    
     [HttpGet("{id}")]
     public async Task<ActionResult<ProductVo>> FindById(long id)
     {
@@ -29,6 +30,29 @@ public class ProductController : ControllerBase
         if (product.Id <= 0) return NotFound();
         return Ok(product);
     }
+    
+    [HttpPost]
+    public async Task<ActionResult<ProductVo>> Create(ProductVo vo)
+    {
+        if (vo == null) return BadRequest();
+        var product = await _repository.Create(vo);
+        return Ok(product);
+    }
+    
+    [HttpPut]
+    public async Task<ActionResult<ProductVo>> Update(ProductVo vo)
+    {
+        if (vo == null) return BadRequest();
+        var product = await _repository.Update(vo);
+        return Ok(product);
+    }
 
+    [HttpDelete("{id}")]
+    public async Task<ActionResult> Delete(long id)
+    {
+        var status = await _repository.Delete(id);
+        if (!status) return BadRequest();
+        return Ok(status);
+    }
     
 }
