@@ -19,9 +19,9 @@ public class ProductController : Controller
         return View(products);
     }    
     
-    public async Task<IActionResult> ProductCreate()
+    public Task<IActionResult> ProductCreate()
     {
-        return View();
+        return Task.FromResult<IActionResult>(View());
     }
     [HttpPost]
     public async Task<IActionResult> ProductCreate(ProductModel model)
