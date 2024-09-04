@@ -13,9 +13,9 @@ public class ProductController : ControllerBase
 
     public ProductController(IProductRepository repository)
     {
-        _repository = repository ?? throw new ArgumentException(nameof(repository));
+        _repository = repository;
     }
-
+    
     [HttpGet]
     public async Task<ActionResult<IEnumerable<ProductVo>>> FindAll()
     {

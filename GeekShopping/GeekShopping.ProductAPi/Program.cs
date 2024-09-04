@@ -18,7 +18,7 @@ public class Program
         builder.Services.AddDbContext<MySqlContext>(options =>
             options.UseMySql(connection, new MySqlServerVersion(new Version(8, 0, 28))));
 
-        var mapperConfig = MappingConfig.RegisterMapps();
+        var mapperConfig = MappingConfig.RegisterMaps();
         IMapper mapper = mapperConfig.CreateMapper();
         builder.Services.AddSingleton(mapper);
 

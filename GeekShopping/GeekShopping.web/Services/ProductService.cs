@@ -7,11 +7,11 @@ namespace GeekShopping.web.Services;
 public class ProductService : IProductService
 {
     private readonly HttpClient _client;
-    public const string BasePath = "api/v1/products";
+    private const string BasePath = "api/v1/product";
 
     public ProductService(HttpClient client)
     {
-        _client = client ?? throw new ArgumentNullException(nameof(client));
+        _client = client;
     }
 
     public async Task<IEnumerable<ProductModel>> FindAllProducts()

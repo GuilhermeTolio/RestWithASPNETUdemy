@@ -23,6 +23,6 @@
       <Folder Include="Models\Repository\" />
       <Folder Include="wwwroot\Images\" />
     </ItemGroup>
-
+    
     
 </Project>
