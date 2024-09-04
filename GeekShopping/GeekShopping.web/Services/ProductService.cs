@@ -43,7 +43,8 @@ public class ProductService : IProductService
     public async Task<bool> DeleteProductById(long id)
     {
         var response = await _client.DeleteAsync($"{BasePath}/{id}");
-        if (response.IsSuccessStatusCode) return await response.ReadContentAs<bool>();
+        if (response.IsSuccessStatusCode)
+            return await response.ReadContentAs<bool>();
         else throw new Exception("Something went wrong when calling API");
     }
 }
