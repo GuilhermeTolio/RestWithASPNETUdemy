@@ -12,16 +12,16 @@ public class ProductController : Controller
     {
         _productService = productService ?? throw new ArgumentNullException(nameof(productService));
     }
-    
+
     public async Task<IActionResult> ProductIndex()
     {
         var products = await _productService.FindAllProducts();
         return View(products);
-    }    
-    
-    public async Task<IActionResult> ProductCreate()
+    }
+
+    public Task<IActionResult> ProductCreate()
     {
-        return View();
+        return Task.FromResult<IActionResult>(View());
     }
 
     [HttpPost]
@@ -30,12 +30,14 @@ public class ProductController : Controller
         if (ModelState.IsValid)
         {
             var response = await _productService.CreateProduct(model);
-            if (response != null) return RedirectToAction(
-                nameof(ProductIndex));
+            if (response != null)
+                return RedirectToAction(
+                    nameof(ProductIndex));
         }
+
         return View(model);
     }
-    
+
     public async Task<IActionResult> ProductUpdate(int id)
     {
         var model = await _productService.FindProductById(id);
@@ -49,9 +51,11 @@ public class ProductController : Controller
         if (ModelState.IsValid)
         {
             var response = await _productService.UpdateProduct(model);
-            if (response != null) return RedirectToAction(
-                nameof(ProductIndex));
+            if (response != null)
+                return RedirectToAction(
+                    nameof(ProductIndex));
         }
+
         return View(model);
     }
     
@@ -65,12 +69,13 @@ public class ProductController : Controller
     [HttpPost]
     public async Task<IActionResult> ProductDelete(ProductModel model)
     {
-        var response = await _productService.DeleteProductById(model.Id);
-        if (response) return RedirectToAction(
-            nameof(ProductIndex));
+        if (ModelState.IsValid)
+        {
+            var response = await _productService.DeleteProductById(model.Id);
+            if (response) return RedirectToAction(
+                    nameof(ProductIndex));
+        }
+
         return View(model);
     }
-    
-    
-    
 }

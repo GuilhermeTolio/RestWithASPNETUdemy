@@ -48,7 +48,7 @@ public class ProductController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    public async Task<ActionResult> Delete([FromBody]long id)
+    public async Task<ActionResult> Delete(long id)
     {
         var status = await _repository.Delete(id);
         if (!status) return BadRequest();
