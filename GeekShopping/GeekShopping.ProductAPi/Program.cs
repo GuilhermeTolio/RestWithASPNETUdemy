@@ -13,7 +13,7 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
-        var connection = builder.Configuration.GetConnectionString("MySQLConnection");
+        var connection = builder.Configuration.GetConnectionString("ConnectionStrings:MySQLConnection");
 
         builder.Services.AddDbContext<MySqlContext>(options =>
             options.UseMySql(connection, new MySqlServerVersion(new Version(8, 0, 28))));
@@ -42,7 +42,6 @@ public class Program
         app.UseHttpsRedirection();
 
         app.UseAuthorization();
-
 
         app.MapControllers();
 
